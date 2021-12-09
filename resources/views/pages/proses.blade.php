@@ -38,6 +38,7 @@
                                     <th>Nomor</th>
                                     <th>Nama Kolam</th>
                                     <th>Lokasi</th>
+                                    <th>Umur</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -47,6 +48,7 @@
                                     <td>1</td>
                                     <td>Mawar</td>
                                     <td>Jember</td>
+                                    <td>10</td>
                                     <td>Aktif</td>
                                     <td><a href="/" class="btn btn-primary btn-sm">proses</a></td>
                                 </tr>
