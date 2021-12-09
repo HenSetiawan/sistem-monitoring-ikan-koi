@@ -17,3 +17,8 @@ Route::get('/', function () {
     $data=[12,16,15,67,34,78];
     return view('pages/blank',["data" => $data]);
 });
+
+Route::get('/proses', function () {
+    $data=[12,16,15,67,34,78];
+    return view('pages/proses');
+});
