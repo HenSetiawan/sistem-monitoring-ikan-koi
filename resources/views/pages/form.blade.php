@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-
   <!-- CSS Libraries -->
 
   <!-- Template CSS -->
@@ -26,42 +24,39 @@
       @include("/partial/Navbar")
       @include("/partial/Sidebar")
       <!-- Main Content -->
-    <div class="main-content">
-      <section class="section">
+      <div class="main-content">
+        <section class="section">
             <!-- section body -->
-            <div class="row">
-                <div class="col-lg-12 table-responsive">
-                    <div class="card p-5">
-                      <div class="button">
-                      <a href="/form" class="btn btn-primary mb-3 btn-sm">Tambah Data</a>
-                      </div>
-                        <table id="table_id" class="display">
-                            <thead>
-                                <tr>
-                                    <th>Nomor</th>
-                                    <th>Nama Kolam</th>
-                                    <th>Lokasi</th>
-                                    <th>Umur</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mawar</td>
-                                    <td>Jember</td>
-                                    <td>10</td>
-                                    <td>Aktif</td>
-                                    <td><a href="/" class="btn btn-primary btn-sm">proses</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="col-12 col-md-6 col-lg-6 mx-auto">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Input Data Kolam</h4>
+                  </div>
+                  <div class="card-body">
+                      <form action="/api/v1/kolam" method="post">
+                        <div class="form-group">
+                            <label>Nama Kolam</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Umur</label>
+                            <select class="form-control">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </form>
+                  </div>
                 </div>
-            </div>
-      </section>
-    </div>
+              </div>
+        </section>
+      </div>
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2021 <div class="bullet"></div> Build By <a href="https://nauval.in/">Kelompok 5 Polije Bondowoso</a>
@@ -84,16 +79,6 @@
 <script src="{{asset('assets/js/stisla.js')}}"></script>
 <script src="{{asset('assets/js/scripts.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
-
-
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
-<script>
-    let table = new DataTable('#table_id', {
-    // options
-});
-</script>
-
 
 </body>
 </html>

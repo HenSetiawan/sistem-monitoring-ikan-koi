@@ -22,3 +22,10 @@ Route::get('/proses', function () {
     $data=[12,16,15,67,34,78];
     return view('pages/proses');
 });
+
+Route::get('/form', function () {
+    $data=[12,16,15,67,34,78];
+    return view('pages/form');
+});
+
+
