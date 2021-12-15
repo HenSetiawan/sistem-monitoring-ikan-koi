@@ -17,7 +17,7 @@ class KolamController extends Controller
 
         try {
             $kolam = ModelKolam::create($validated);
-            return redirect("/proses");
+            return redirect("/kolam");
         } catch (QueryException $err) {
             dd($err->errorInfo);
         }
@@ -26,6 +26,17 @@ class KolamController extends Controller
 
     public function showTableKolam(){
         $allKolam = ModelKolam::all();
-        return view('pages/proses',["data"=>$allKolam]);
+        return view('pages/kolam',["data"=>$allKolam]);
+    }
+
+    public function delete($idKolam){
+        try {
+            ModelKolam::find($idKolam)->delete();
+            return redirect('/kolam');
+        } catch (QueryException $err) {
+            dd($err);
+        }
+       
+        
     }
 }

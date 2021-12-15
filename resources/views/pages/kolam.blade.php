@@ -42,7 +42,8 @@
                                     <th>Lokasi</th>
                                     <th>Umur</th>
                                     <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th>Detail</th>
+                                    <th>Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +54,7 @@
                                     <td>{{$kolam->umur}}</td>
                                     <td>{{$kolam->status}}</td>
                                     <td><a href="/sensor/{{$kolam->id}}" class="btn btn-primary btn-sm">proses</a></td>
+                                    <td><a href="/delete-kolam/{{$kolam->id}}" class="btn btn-danger btn-sm">hapus</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

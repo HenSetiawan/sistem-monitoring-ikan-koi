@@ -34,7 +34,7 @@
                       <h4>Waktu Pengambilan Data</h4>
                     </div>
                     <div class="card-body">
-                      <p>{{$sensor[0]->created_at}}</p>
+                      <p>{{$time}}</p>
                     </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                       <h4>Data PH</h4>
                     </div>
                     <div class="card-body">
-                      <p>{{$averagePh}}</p>
+                      <p>{{round($averagePh)}}</p>
                     </div>
                 </div>
               </div>
@@ -54,7 +54,7 @@
                       <h4>Data Suhu</h4>
                     </div>
                     <div class="card-body">
-                    <p>{{$averageSuhu}}&deg;  C</p>
+                    <p>{{round($averageSuhu)}}&deg;  C</p>
                     </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@
     const suhuChart = new Chart(suhu, {
     type: 'line',
     data: {
-        labels: [1,2,3,4],
+        labels: [1,2,3,4,5,6],
         datasets: [{
             label: 'Data Suhu',
             data: dataSuhu,
@@ -131,7 +131,7 @@
 const phChart = new Chart(ph,{
   type: 'line',
     data: {
-        labels: ['1','2','3','4'],
+        labels: ['1','2','3','4','5','6'],
         datasets: [{
             label: 'Data PH',
             data: dataPh,
