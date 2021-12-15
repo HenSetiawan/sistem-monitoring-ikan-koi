@@ -17,7 +17,7 @@ use App\Http\Controllers\SensorController;
 
 Route::get('/sensor/{id}',[SensorController::class,"showSensor"] );
 
-Route::get('/proses',[KolamController::class,"showTableKolam"]);
+Route::get('/kolam',[KolamController::class,"showTableKolam"]);
 
 Route::get('/form', function () {
     return view('pages/form');

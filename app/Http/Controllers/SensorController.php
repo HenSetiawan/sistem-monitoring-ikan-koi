@@ -38,9 +38,7 @@ class SensorController extends Controller
             $ph=[];
             $createdTime=[];
 
-           
-
-            for ($i=0; $i<count($sensor); $i++) { 
+            for ($i=0; $i<4; $i++) { 
                 array_push($suhu,$sensor[$i]->suhu);
                 array_push($ph,$sensor[$i]->ph);
                 array_push($createdTime,$sensor[$i]->created_at);
@@ -56,8 +54,7 @@ class SensorController extends Controller
 
             return view('pages/blank',["sensor"=>$sensor,"averageSuhu"=>$averageSuhu,"averagePh"=>$averagePh,"data"=>$data]);
         }else{
-            $allKolam = ModelKolam::all();
-            return view('pages/proses',["data"=>$allKolam]);
+            return redirect("/proses");
             
         }
     }

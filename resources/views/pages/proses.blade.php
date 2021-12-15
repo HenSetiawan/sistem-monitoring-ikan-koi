@@ -30,8 +30,8 @@
       <section class="section">
             <!-- section body -->
             <div class="row">
-                <div class="col-lg-12 table-responsive">
-                    <div class="card p-5">
+                <div class="col-lg-12">
+                    <div class="card p-5 table-responsive">
                       <div class="button">
                       <a href="/form" class="btn btn-primary mb-3 btn-sm">Tambah Data</a>
                       </div>
