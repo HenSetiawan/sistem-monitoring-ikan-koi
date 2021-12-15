@@ -36,19 +36,15 @@
                       <form action="/api/v1/kolam" method="post">
                         <div class="form-group">
                             <label>Nama Kolam</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="nama">
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="lokasi">
                         </div>
                         <div class="form-group">
                             <label>Umur</label>
-                            <select class="form-control">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
+                            <input type="number" class="form-control" name="umur">
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>

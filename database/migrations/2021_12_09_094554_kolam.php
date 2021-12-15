@@ -18,7 +18,8 @@ class Kolam extends Migration
             $table->string('nama');
             $table->string('lokasi');
             $table->integer('umur');
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
+            $table->timestamps();
         });
     }
 

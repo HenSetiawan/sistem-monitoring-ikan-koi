@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KolamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('/sensor',function (Request $request) {
         'state' => 'CA',
     ]);
 });
+
+Route::post('/v1/kolam',[KolamController::class,"AddNewKolam"]);
