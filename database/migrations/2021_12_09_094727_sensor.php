@@ -17,9 +17,9 @@ class Sensor extends Migration
             $table->id();
             $table->string('suhu');
             $table->string('ph');
-            $table->boolean('status');
             $table->unsignedBigInteger('kolam_id');
             $table->foreign('kolam_id')->references('id')->on('kolam')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

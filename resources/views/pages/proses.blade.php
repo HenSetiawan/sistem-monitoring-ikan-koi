@@ -37,8 +37,7 @@
                       </div>
                         <table id="table_id" class="display">
                             <thead>
-                                <tr>
-                                    <th>Nomor</th>
+                                <tr>               
                                     <th>Nama Kolam</th>
                                     <th>Lokasi</th>
                                     <th>Umur</th>
@@ -49,12 +48,11 @@
                             <tbody>
                             @foreach ($data as $kolam)
                                 <tr>
-                                    <td>1</td>
                                     <td>{{$kolam->nama}}</td>
                                     <td>{{$kolam->lokasi}}</td>
                                     <td>{{$kolam->umur}}</td>
                                     <td>{{$kolam->status}}</td>
-                                    <td><a href="/" class="btn btn-primary btn-sm">proses</a></td>
+                                    <td><a href="/sensor/{{$kolam->id}}" class="btn btn-primary btn-sm">proses</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

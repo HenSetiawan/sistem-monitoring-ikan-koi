@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KolamController;
+use App\Http\Controllers\SensorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,15 +15,11 @@ use App\Http\Controllers\KolamController;
 |
 */
 
-Route::get('/', function () {
-    $data=[12,16,15,67,34,78];
-    return view('pages/blank',["data" => $data]);
-});
+Route::get('/sensor/{id}',[SensorController::class,"showSensor"] );
 
 Route::get('/proses',[KolamController::class,"showTableKolam"]);
 
 Route::get('/form', function () {
-    $data=[12,16,15,67,34,78];
     return view('pages/form');
 });
 

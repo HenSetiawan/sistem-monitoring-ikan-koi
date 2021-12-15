@@ -34,7 +34,7 @@
                       <h4>Waktu Pengambilan Data</h4>
                     </div>
                     <div class="card-body">
-                      <p>12:12:2001 | 19:30:15</p>
+                      <p>{{$sensor[0]->created_at}}</p>
                     </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                       <h4>Data PH</h4>
                     </div>
                     <div class="card-body">
-                      <p>7.20 Ph</p>
+                      <p>{{$averagePh}}</p>
                     </div>
                 </div>
               </div>
@@ -54,7 +54,7 @@
                       <h4>Data Suhu</h4>
                     </div>
                     <div class="card-body">
-                    <p>26&deg;  C</p>
+                    <p>{{$averageSuhu}}&deg;  C</p>
                     </div>
                 </div>
               </div>
@@ -84,7 +84,8 @@
         </div>
       </footer>
     </div>
-  </div>
+</div>
+
 
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -103,16 +104,19 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.1/dist/chart.min.js"></script>
   <script>
-    
+
+   const dataSuhu = <?php echo $data['suhu']; ?>;
+   const dataPh = <?php echo $data['ph']; ?>;
+
     const suhu = document.getElementById('suhu').getContext('2d');
     const ph = document.getElementById('ph').getContext('2d');
     const suhuChart = new Chart(suhu, {
     type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: [1,2,3,4],
         datasets: [{
             label: 'Data Suhu',
-            data: [1, 3, 2, 4, 3,4 ],
+            data: dataSuhu,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
             ],
@@ -127,10 +131,10 @@
 const phChart = new Chart(ph,{
   type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['1','2','3','4'],
         datasets: [{
             label: 'Data PH',
-            data: [1, 3, 2, 4, 3,4 ],
+            data: dataPh,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
             ],
