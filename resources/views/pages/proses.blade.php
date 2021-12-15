@@ -47,14 +47,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach ($data as $kolam)
                                 <tr>
                                     <td>1</td>
-                                    <td>Mawar</td>
-                                    <td>Jember</td>
-                                    <td>10</td>
-                                    <td>Aktif</td>
+                                    <td>{{$kolam->nama}}</td>
+                                    <td>{{$kolam->lokasi}}</td>
+                                    <td>{{$kolam->umur}}</td>
+                                    <td>{{$kolam->status}}</td>
                                     <td><a href="/" class="btn btn-primary btn-sm">proses</a></td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

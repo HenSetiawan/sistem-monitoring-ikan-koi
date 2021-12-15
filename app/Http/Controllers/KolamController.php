@@ -17,10 +17,15 @@ class KolamController extends Controller
 
         try {
             $kolam = ModelKolam::create($validated);
+            return redirect("/proses");
         } catch (QueryException $err) {
             dd($err->errorInfo);
         }
 
-       
+    }
+
+    public function showTableKolam(){
+        $allKolam = ModelKolam::all();
+        return view('pages/proses',["data"=>$allKolam]);
     }
 }
