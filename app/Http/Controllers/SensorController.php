@@ -67,14 +67,49 @@ class SensorController extends Controller
             $data=[
                 "suhu"=>json_encode($suhu,JSON_NUMERIC_CHECK),
                 "ph"=>json_encode($ph,JSON_NUMERIC_CHECK),
+                'umurIkan' => $dataKolam->umur,
+                "idKolam"=>$dataKolam->id
             ];
 
             $averageSuhu=array_sum($suhu)/count($suhu);
             $averagePh=array_sum($ph)/count($ph);
 
-            return view('pages/blank',["time"=>$createdTime,"averageSuhu"=>$averageSuhu,"averagePh"=>$averagePh,"data"=>$data]);
+
+            $result;
+            // check kondisi ph
+            if($averagePh >= 6 && $averagePh <=8){
+                // check kondisi suhu
+                if($averageSuhu>=21 && $averageSuhu <=29){
+                    $result="Optimal";
+                }else if($averageSuhu >=30){
+                    // check umur ikan
+                    if($data['umurIkan']>=1 && $data['umurIkan']<=6){
+                        $result="Optimal"; 
+                    }else if($data['umurIkan'] >=6 && $data['umurIkan']<=36){
+                        $result="Optimal"; 
+                    }else{
+                        $result="Tidak Optimal";
+                    }
+                }
+                else{
+                    $result="Tidak Optimal";
+                }
+            }else{
+                $result="Tidak Optimal";
+            }
+            
+            return view('pages/blank',["time"=>$createdTime,"averageSuhu"=>$averageSuhu,"averagePh"=>$averagePh,"data"=>$data,"result"=>$result]);
         }else{
-            return redirect("/kolam");
+            return redirect("/");
+            
+        }
+    }
+
+    public function delete($id){
+        try {
+            ModelKolam::find($id)->delete();
+            return redirect("/sensor/".$id);
+        } catch (\Throwable $th) {
             
         }
     }

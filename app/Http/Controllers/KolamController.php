@@ -17,7 +17,7 @@ class KolamController extends Controller
 
         try {
             $kolam = ModelKolam::create($validated);
-            return redirect("/kolam");
+            return redirect("/");
         } catch (QueryException $err) {
             dd($err->errorInfo);
         }
@@ -32,7 +32,7 @@ class KolamController extends Controller
     public function delete($idKolam){
         try {
             ModelKolam::find($idKolam)->delete();
-            return redirect('/kolam');
+            return redirect('/');
         } catch (QueryException $err) {
             dd($err);
         }

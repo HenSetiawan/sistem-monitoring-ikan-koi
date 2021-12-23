@@ -28,37 +28,62 @@
         <section class="section">
             <!-- section body -->
             <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-3">
                 <div class="card">
                     <div class="card-header">
-                      <h4>Waktu Pengambilan Data</h4>
+                      <h4>Waktu Pengambilan</h4>
                     </div>
                     <div class="card-body">
                       <p>{{$time}}</p>
                     </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-3">
                 <div class="card">
                     <div class="card-header">
                       <h4>Data PH</h4>
                     </div>
                     <div class="card-body">
-                      <p>{{round($averagePh)}}</p>
+                      <p class="h5 font-weight-bold">{{round($averagePh)}}</p>
                     </div>
                 </div>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-3">
                 <div class="card">
                     <div class="card-header">
                       <h4>Data Suhu</h4>
                     </div>
                     <div class="card-body">
-                    <p>{{round($averageSuhu)}}&deg;  C</p>
+                    <p class="h5 font-weight-bold">{{round($averageSuhu)}}&deg;  C</p>
+                    </div>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-header">
+                      <h4>Umur Ikan</h4>
+                    </div>
+                    <div class="card-body">
+                    <p  class="font-weight-bold h5">{{$data['umurIkan']}} Bulan</p>
                     </div>
                 </div>
               </div>
              <!-- section body end -->
+             <a class="btn btn-primary btn-sm ml-3 mb-2" href="/delete/{{$data['idKolam']}}">Perbarui Data</a>
+             </div>
+             <div class="row">
+               <div class="col-lg-12">
+                 @if($result!=="Optimal")
+                <div class="alert alert-danger" role="alert">
+                  {{$result}}
+                </div>
+               @endif
+               @if($result==="Optimal")
+                <div class="alert alert-success" role="alert">
+                  {{$result}}
+                </div>
+               @endif
+               </div>
              </div>
 
              <div class="row">
