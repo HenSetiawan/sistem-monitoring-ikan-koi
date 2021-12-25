@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <div id="app">
+  <div id="app" data-id="{{$id}}">
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
       @include("/partial/Navbar")
@@ -34,7 +34,7 @@
                       <h4>Waktu Pengambilan</h4>
                     </div>
                     <div class="card-body">
-                      <p>{{$time}}</p>
+                      <p class="time font-weight-bold h5">-</p>
                     </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                       <h4>Data PH</h4>
                     </div>
                     <div class="card-body">
-                      <p class="h5 font-weight-bold">{{round($averagePh)}}</p>
+                      <p class="h5 font-weight-bold ph">-</p>
                     </div>
                 </div>
               </div>
@@ -54,7 +54,7 @@
                       <h4>Data Suhu</h4>
                     </div>
                     <div class="card-body">
-                    <p class="h5 font-weight-bold">{{round($averageSuhu)}}&deg;  C</p>
+                    <p class="h5 font-weight-bold suhu">-&deg;  C</p>
                     </div>
                 </div>
               </div>
@@ -64,28 +64,16 @@
                       <h4>Umur Ikan</h4>
                     </div>
                     <div class="card-body">
-                    <p  class="font-weight-bold h5">{{$data['umurIkan']}} Bulan</p>
+                    <p  class="font-weight-bold h5 umur-ikan">-</p>
                     </div>
                 </div>
               </div>
              <!-- section body end -->
-             <a class="btn btn-primary btn-sm ml-3 mb-2" href="/delete/{{$data['idKolam']}}">Perbarui Data</a>
-             </div>
-             <div class="row">
-               <div class="col-lg-12">
-                 @if($result!=="Optimal")
-                <div class="alert alert-danger" role="alert">
-                  {{$result}}
-                </div>
-               @endif
-               @if($result==="Optimal")
-                <div class="alert alert-success" role="alert">
-                  {{$result}}
-                </div>
-               @endif
-               </div>
              </div>
 
+             <div class="alert alert-danger" role="alert">
+              
+            </div>
              <div class="row">
                <div class="col-lg-6">
                  <div class="card">
@@ -119,59 +107,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-
-<script src="{{asset('assets/js/stisla.js')}}"></script>
-<script src="{{asset('assets/js/scripts.js')}}"></script>
-<script src="{{asset('assets/js/custom.js')}}"></script>
-
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.1/dist/chart.min.js"></script>
-  <script>
 
-   const dataSuhu = <?php echo $data['suhu']; ?>;
-   const dataPh = <?php echo $data['ph']; ?>;
 
-    const suhu = document.getElementById('suhu').getContext('2d');
-    const ph = document.getElementById('ph').getContext('2d');
-    const suhuChart = new Chart(suhu, {
-    type: 'line',
-    data: {
-        labels: [1,2,3,4,5,6],
-        datasets: [{
-            label: 'Data Suhu',
-            data: dataSuhu,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 2
-        }]
-    }
-});
-
-const phChart = new Chart(ph,{
-  type: 'line',
-    data: {
-        labels: ['1','2','3','4','5','6'],
-        datasets: [{
-            label: 'Data PH',
-            data: dataPh,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 2
-        }]
-    }
-    })
-</script>
-
+  <script src="{{asset('assets/js/stisla.js')}}"></script>
+  <script src="{{asset('assets/js/scripts.js')}}"></script>
+  <script src="{{asset('assets/js/custom.js')}}"></script>
+  <script src="{{asset('assets/js/sensor.js')}}"></script>
 
 </body>
 </html>

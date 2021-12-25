@@ -21,6 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/v1/sensor',[SensorController::class,"store"]);
-Route::get('/v1/sensor',[SensorController::class,"store"]);
-
+Route::get('/v1/sensor/{id}',[SensorController::class,"getSensor"]);
 Route::post('/v1/kolam',[KolamController::class,"AddNewKolam"]);

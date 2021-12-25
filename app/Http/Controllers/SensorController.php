@@ -40,40 +40,51 @@ class SensorController extends Controller
         }
     }
 
-    public function showSensor($idKolam){
-        $dataKolam = ModelKolam::find($idKolam);
+  
+
+    public function delete($id){
+        try {
+            ModelKolam::find($id)->delete();
+            return redirect("/sensor/".$id);
+        } catch (\Throwable $th) {
+            
+        }
+    }
+
+    public function showSensor($id){
+        return view('pages/sensor',["id"=>$id]);
+    }
+
+    public function getSensor($id){
+        $dataKolam = ModelKolam::find($id);
         if($dataKolam==!null){
             $sensor=$dataKolam->sensor;
+           
 
             $suhu=[];
             $ph=[];
 
-            if(count($sensor)<6){
-                for ($i=0;$i<6;$i++){
-                    array_push($suhu,0);
-                    array_push($ph,0);
-                }
-
-                $createdTime="0000-00-00 00:00:00";
-                
-            }else{
-                for ($i=0; $i<6; $i++) { 
-                    array_push($suhu,$sensor[$i]->suhu);
-                    array_push($ph,$sensor[$i]->ph);
-                }
-                $createdTime=$sensor[0]->created_at;
+            for ($i=0; $i<count($sensor); $i++) { 
+                array_push($ph,$sensor[$i]->ph);
+                array_push($suhu,$sensor[$i]->suhu);
             }
- 
-            $data=[
-                "suhu"=>json_encode($suhu,JSON_NUMERIC_CHECK),
-                "ph"=>json_encode($ph,JSON_NUMERIC_CHECK),
-                'umurIkan' => $dataKolam->umur,
-                "idKolam"=>$dataKolam->id
-            ];
 
-            $averageSuhu=array_sum($suhu)/count($suhu);
-            $averagePh=array_sum($ph)/count($ph);
+            $averageSuhu;
+            $averagePh;
+            $createdTime=0;
 
+            if(!empty($suhu && !empty($ph))){
+               $averagePh = round(array_sum($suhu)/count($suhu));
+               $averageSuhu = round(array_sum($ph)/count($ph));
+            }else{
+                $averageSuhu=0;
+                $averagePh=0;
+            }
+
+            if(!empty($sensor[0])){
+                $createdTime=date_format($sensor[0]->created_at,'H:i:s');
+                
+            }
 
             $result;
             // check kondisi ph
@@ -83,9 +94,9 @@ class SensorController extends Controller
                     $result="Optimal";
                 }else if($averageSuhu >=30){
                     // check umur ikan
-                    if($data['umurIkan']>=1 && $data['umurIkan']<=6){
+                    if($dataKolam->umur>=1 && $dataKolam->umur<=6){
                         $result="Optimal"; 
-                    }else if($data['umurIkan'] >=6 && $data['umurIkan']<=36){
+                    }else if($dataKolam->umur >=6 && $dataKolam->umur<=36){
                         $result="Optimal"; 
                     }else{
                         $result="Tidak Optimal";
@@ -98,18 +109,20 @@ class SensorController extends Controller
                 $result="Tidak Optimal";
             }
             
-            return view('pages/blank',["time"=>$createdTime,"averageSuhu"=>$averageSuhu,"averagePh"=>$averagePh,"data"=>$data,"result"=>$result]);
+            $data=[
+                "ph"=>$ph,
+                "suhu"=>$suhu,
+                "averagePh"=>$averagePh,
+                "averageSuhu"=>$averageSuhu,
+                'umurIkan' => $dataKolam->umur,
+                "created"=>$createdTime,
+                "result"=>$result
+            ];
+
+            return response()->json($data);
+
         }else{
             return redirect("/");
-            
-        }
-    }
-
-    public function delete($id){
-        try {
-            ModelKolam::find($id)->delete();
-            return redirect("/sensor/".$id);
-        } catch (\Throwable $th) {
             
         }
     }
